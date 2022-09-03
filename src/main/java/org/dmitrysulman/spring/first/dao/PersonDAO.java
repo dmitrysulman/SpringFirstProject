@@ -1,5 +1,6 @@
 package org.dmitrysulman.spring.first.dao;
 
+import org.dmitrysulman.spring.first.models.Book;
 import org.dmitrysulman.spring.first.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -60,5 +61,9 @@ public class PersonDAO {
 
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM person WHERE id=?", id);
+    }
+
+    public List<Book> getBooksOfPerson(int personId) {
+        return jdbcTemplate.query("SELECT * FROM book WHERE person_id=?", new BeanPropertyRowMapper<>(Book.class), personId);
     }
 }

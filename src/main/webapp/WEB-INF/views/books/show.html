@@ -9,6 +9,23 @@
     <hr>
     <div th:text="${book.getTitle()} + ', ' + ${book.getAuthor()} + ', ' + ${book.getYear()}"></div>
     <br>
+    <div th:if="${people}">
+        The books is free. Assign?
+        <form th:method="POST" th:action="@{/books/{id}/assign(id=${book.getId()})}">
+            <label for="person">Choose user</label>
+            <select th:object="${person}" th:field="*{id}" id="person">
+                <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getFullName()}"></option>
+            </select>
+            <input type="submit" value="Assign the book">
+        </form>
+    </div>
+    <div th:if="${owner}">
+        Owner of the book: <span th:text="${owner.getFullName()}"></span>
+        <form th:method="POST" th:action="@{/books/{id}/release(id=${book.getId()})}" onsubmit="return confirm('Do you really want to release the book?');">
+            <input type="submit" value="Release the book">
+        </form>
+    </div>
+    <hr>
     <a th:href="@{/books/{id}/edit(id=${book.getId()})}">Edit book</a>
     <br>
     <br>

@@ -30,6 +30,7 @@ public class PeopleController {
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("people", personDAO.index());
+
         return "people/index";
     }
 
@@ -40,25 +41,27 @@ public class PeopleController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         } else {
             model.addAttribute("person", person.get());
+            model.addAttribute("books", personDAO.getBooksOfPerson(id));
         }
+
         return "people/show";
     }
 
     @GetMapping("/add")
     public String add(@ModelAttribute("person") Person person) {
         person.setYearOfBirth(2000);
+
         return "people/add";
     }
 
     @PostMapping("/add")
     public String add(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
         personValidator.validate(person, bindingResult);
-
         if (bindingResult.hasErrors()) {
             return "people/add";
         }
-
         int id = personDAO.create(person);
+
         return "redirect:/people/" + id;
     }
 
@@ -77,12 +80,11 @@ public class PeopleController {
     @PostMapping("/{id}/edit")
     public String update(@ModelAttribute @Valid Person person, @PathVariable("id") int id, BindingResult bindingResult) {
         personValidator.validate(person, bindingResult);
-
         if (bindingResult.hasErrors()) {
             return "people/edit";
         }
-
         personDAO.update(id, person);
+
         return "redirect:/people/" + id;
     }
 
@@ -94,6 +96,7 @@ public class PeopleController {
         } else {
             personDAO.delete(id);
         }
+
         return "redirect:/people/";
     }
 }

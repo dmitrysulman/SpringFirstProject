@@ -1,6 +1,7 @@
 package org.dmitrysulman.spring.first.dao;
 
 import org.dmitrysulman.spring.first.models.Book;
+import org.dmitrysulman.spring.first.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -57,12 +58,19 @@ public class BookDAO {
         jdbcTemplate.update("DELETE FROM book WHERE id=?", id);
     }
 
-    public void assign(int bookId, int personId) {
+    public void assign(int bookId, Person person) {
         jdbcTemplate.update("UPDATE book SET person_id=? WHERE id=?",
-                personId, bookId);
+                person.getId(), bookId);
     }
 
     public void release(int id) {
         jdbcTemplate.update("UPDATE book SET person_id=NULL WHERE id=?", id);
+    }
+
+    public Optional<Person> getBookOwner(int id) {
+        return jdbcTemplate.query("SELECT p.* FROM book b JOIN person p on p.id = b.person_id WHERE b.id=?",
+                        new BeanPropertyRowMapper<>(Person.class), id)
+                .stream()
+                .findAny();
     }
 }

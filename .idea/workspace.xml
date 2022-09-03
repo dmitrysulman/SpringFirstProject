@@ -9,18 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04f45582-1de5-4059-a50c-bdae826a460c" name="Changes" comment="Commit 5">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/controllers/BooksController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5bf8be43-1c86-4e18-8de9-16c6eb25a924.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5bf8be43-1c86-4e18-8de9-16c6eb25a924.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5bf8be43-1c86-4e18-8de9-16c6eb25a924/storage_v2/_src_/database/project1.OBh5xA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5bf8be43-1c86-4e18-8de9-16c6eb25a924/storage_v2/_src_/database/project1.OBh5xA/schema/public.abK9xQ.meta" afterDir="false" />
+    <list default="true" id="04f45582-1de5-4059-a50c-bdae826a460c" name="Changes" comment="Commit 6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/controllers/BooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/controllers/PeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/controllers/PeopleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/dao/BookDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/dao/BookDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/models/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/dao/PersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dmitrysulman/spring/first/dao/PersonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/show.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +63,8 @@
     "last_opened_file_path": "C:/Users/d1304/IdeaProjects/SpringFirstProject/src/main/webapp/WEB-INF/views/books",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "database.query.execution"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -192,7 +189,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1662130746301</updated>
-      <workItem from="1662130748149" duration="30388000" />
+      <workItem from="1662130748149" duration="35129000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1">
       <created>1662138127643</created>
@@ -229,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662206783261</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Commit 6">
+      <created>1662214389433</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662214389433</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +257,7 @@
     <MESSAGE value="Commit 3" />
     <MESSAGE value="Commit 4" />
     <MESSAGE value="Commit 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 5" />
+    <MESSAGE value="Commit 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 6" />
   </component>
 </project>
