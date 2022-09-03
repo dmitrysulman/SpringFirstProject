@@ -20,7 +20,7 @@
         </form>
     </div>
     <div th:if="${owner}">
-        Owner of the book: <span th:text="${owner.getFullName()}"></span>
+        Owner of the book: <a th:href="@{/people/{id}(id=${owner.getId()})}" th:text="${owner.getFullName()}"></a>
         <form th:method="POST" th:action="@{/books/{id}/release(id=${book.getId()})}" onsubmit="return confirm('Do you really want to release the book?');">
             <input type="submit" value="Release the book">
         </form>
