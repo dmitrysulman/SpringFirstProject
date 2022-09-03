@@ -37,7 +37,7 @@ public class PeopleController {
     public String show(Model model, @PathVariable("id") int id) {
         Optional<Person> person = personDAO.show(id);
         if (person.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Человек не найден");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         } else {
             model.addAttribute("person", person.get());
         }
@@ -65,7 +65,7 @@ public class PeopleController {
     public String edit(Model model, @PathVariable("id") int id) {
         Optional<Person> person = personDAO.show(id);
         if (person.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Человек не найден");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         } else {
             model.addAttribute("person", person.get());
         }

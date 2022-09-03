@@ -7,11 +7,11 @@ import javax.validation.constraints.Size;
 public class Person {
     private int id;
 
-    @NotEmpty(message = "ФИО не должно быть пустым")
-    @Size(min = 3, max = 100, message = "Длина ФИО должна быть от 3 до 100")
+    @NotEmpty(message = "Name should not be empty")
+    @Size(min = 3, max = 100, message = "Name should be between 3 and 100")
     private String fullName;
 
-    @Min(value = 1900, message = "Год рождение не должен быть меньше 1900")
+    @Min(value = 1900, message = "Year of birth should be greater than 1899")
     private int yearOfBirth;
 
     public Person(int id, String fullName, int yearOfBirth) {

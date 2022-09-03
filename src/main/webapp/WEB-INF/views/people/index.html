@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Список пользователей</title>
+    <title>Users</title>
 </head>
 <body>
 <div th:each="person : ${people}">
     <a th:text="${person.getFullName()} + ', ' + ${person.getYearOfBirth()}" th:href="@{/people/{id}(id=${person.getId()})}"></a>
 </div>
 <hr>
-<a href="/people/add">Добавить пользователя</a>
+<a href="/people/add">New user</a>
 </body>
 </html>

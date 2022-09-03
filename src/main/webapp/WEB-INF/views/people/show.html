@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title th:text="'Страница пользователя ' + ${person.getFullName()}"></title>
+    <title th:text="'User ' + ${person.getFullName()}"></title>
 </head>
 <body>
-    <a href="/people"><< К списку людей</a>
+    <a href="/people"><< To users...</a>
     <hr>
     <div th:text="${person.getFullName()} + ', ' + ${person.getYearOfBirth()}"></div>
-    <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Изменить</a>
+    <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit user</a>
 </body>
 </html>
