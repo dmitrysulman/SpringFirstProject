@@ -46,6 +46,7 @@ public class PeopleController {
 
     @GetMapping("/add")
     public String add(@ModelAttribute("person") Person person) {
+        person.setYearOfBirth(2000);
         return "people/add";
     }
 
@@ -57,7 +58,7 @@ public class PeopleController {
             return "people/add";
         }
 
-        int id = personDAO.add(person);
+        int id = personDAO.create(person);
         return "redirect:/people/" + id;
     }
 
@@ -71,5 +72,28 @@ public class PeopleController {
         }
 
         return "people/edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String update(@ModelAttribute @Valid Person person, @PathVariable("id") int id, BindingResult bindingResult) {
+        personValidator.validate(person, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "people/edit";
+        }
+
+        personDAO.update(id, person);
+        return "redirect:/people/" + id;
+    }
+
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable("id") int id) {
+        Optional<Person> person = personDAO.show(id);
+        if (person.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        } else {
+            personDAO.delete(id);
+        }
+        return "redirect:/people/";
     }
 }

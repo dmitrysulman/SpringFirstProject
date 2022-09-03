@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.43">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>1884</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1920</IntrospectionStateNumber>
       <ServerVersion>14.4</ServerVersion>
       <StartupTime>1661260394</StartupTime>
       <TimeZones>true ACDT
@@ -817,9 +817,10 @@ false Zulu
 13388||10|C|G
 13388||-9223372036854775808|U|G
 13388||10|U|G</Grants>
-      <IntrospectionStateNumber>1884</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1920</IntrospectionStateNumber>
       <ObjectId>16487</ObjectId>
-      <Relations>sequence|table|16496|16497|1
+      <Relations>sequence|table|16547|16548|1
+sequence|table|16556|16557|1
 </Relations>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4240,77 +4241,164 @@ false Zulu
     <schema id="265" parent="6" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1884</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1920</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>527</StateNumber>
       <OwnerName>postgres</OwnerName>
     </schema>
-    <sequence id="266" parent="265" name="person_id_seq">
+    <sequence id="266" parent="265" name="book_id_seq">
       <DataType>integer|0s</DataType>
-      <ObjectId>16496</ObjectId>
-      <StateNumber>1883</StateNumber>
+      <ObjectId>16556</ObjectId>
+      <StateNumber>1919</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="267" parent="265" name="person">
-      <ObjectId>16497</ObjectId>
-      <StateNumber>1883</StateNumber>
+    <sequence id="267" parent="265" name="person_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>16547</ObjectId>
+      <StateNumber>1918</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="268" parent="265" name="book">
+      <ObjectId>16557</ObjectId>
+      <StateNumber>1919</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="268" parent="267" name="id">
+    <table id="269" parent="265" name="person">
+      <ObjectId>16548</ObjectId>
+      <StateNumber>1919</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <check id="270" parent="268" name="book_year_check">
+      <ColNames>year</ColNames>
+      <ObjectId>16560</ObjectId>
+      <Predicate>year &gt; 1899</Predicate>
+      <StateNumber>1919</StateNumber>
+    </check>
+    <column id="271" parent="268" name="id">
       <DataType>integer|0s</DataType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1883</StateNumber>
+      <StateNumber>1919</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="269" parent="267" name="fullname">
-      <DataType>varchar(100)|0s</DataType>
+    <column id="272" parent="268" name="name">
+      <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1883</StateNumber>
+      <StateNumber>1919</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="270" parent="267" name="yearofbirth">
-      <DataType>integer|0s</DataType>
+    <column id="273" parent="268" name="author">
+      <DataType>varchar(400)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>1883</StateNumber>
+      <StateNumber>1919</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="274" parent="268" name="year">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>1919</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="271" parent="267" name="person_pkey">
+    <column id="275" parent="268" name="person_id">
+      <DataType>integer|0s</DataType>
+      <Position>5</Position>
+      <StateNumber>1919</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="276" parent="268" name="book_person_id_fkey">
+      <ColNames>person_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16565</ObjectId>
+      <OnDelete>set-null</OnDelete>
+      <RefColNames>id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>1919</StateNumber>
+      <RefTableId>16548</RefTableId>
+      <RefTableName>person</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="277" parent="268" name="book_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16500</ObjectId>
+      <ObjectId>16563</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1883</StateNumber>
+      <StateNumber>1919</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="272" parent="267" name="person_fullname_key">
+    <key id="278" parent="268" name="book_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16564</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1919</StateNumber>
+      <UnderlyingIndexId>16563</UnderlyingIndexId>
+    </key>
+    <check id="279" parent="269" name="person_yearofbirth_check">
+      <ColNames>yearofbirth</ColNames>
+      <ObjectId>16551</ObjectId>
+      <Predicate>yearofbirth &gt; 1899</Predicate>
+      <StateNumber>1918</StateNumber>
+    </check>
+    <column id="280" parent="269" name="id">
+      <DataType>integer|0s</DataType>
+      <IdentityKind>by-default</IdentityKind>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1918</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="281" parent="269" name="fullname">
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1918</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="282" parent="269" name="yearofbirth">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>1918</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="283" parent="269" name="person_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16552</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1918</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="284" parent="269" name="person_fullname_key">
       <ColNames>fullname</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16502</ObjectId>
-      <StateNumber>1883</StateNumber>
+      <ObjectId>16554</ObjectId>
+      <StateNumber>1918</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="273" parent="267" name="person_pkey">
+    <key id="285" parent="269" name="person_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16501</ObjectId>
+      <ObjectId>16553</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1883</StateNumber>
-      <UnderlyingIndexId>16500</UnderlyingIndexId>
+      <StateNumber>1918</StateNumber>
+      <UnderlyingIndexId>16552</UnderlyingIndexId>
     </key>
-    <key id="274" parent="267" name="person_fullname_key">
+    <key id="286" parent="269" name="person_fullname_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16503</ObjectId>
-      <StateNumber>1883</StateNumber>
-      <UnderlyingIndexId>16502</UnderlyingIndexId>
+      <ObjectId>16555</ObjectId>
+      <StateNumber>1918</StateNumber>
+      <UnderlyingIndexId>16554</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

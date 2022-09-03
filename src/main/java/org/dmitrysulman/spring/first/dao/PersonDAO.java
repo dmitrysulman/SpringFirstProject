@@ -24,7 +24,7 @@ public class PersonDAO {
     }
 
     public List<Person> index() {
-        return jdbcTemplate.query("SELECT * FROM person", new BeanPropertyRowMapper<>(Person.class));
+        return jdbcTemplate.query("SELECT * FROM person ORDER BY fullname", new BeanPropertyRowMapper<>(Person.class));
     }
 
     public Optional<Person> show(int id) {
@@ -39,7 +39,7 @@ public class PersonDAO {
                 .findAny();
     }
 
-    public int add(Person person) {
+    public int create(Person person) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(con -> {
             PreparedStatement preparedStatement = con.prepareStatement(
@@ -53,7 +53,7 @@ public class PersonDAO {
         return (int) Objects.requireNonNull(keyHolder.getKeys()).get("id");
     }
 
-    public void edit(int id, Person person) {
+    public void update(int id, Person person) {
         jdbcTemplate.update("UPDATE person SET fullname=?, yearofbirth=? WHERE id=?",
                 person.getFullName(), person.getYearOfBirth(), id);
     }

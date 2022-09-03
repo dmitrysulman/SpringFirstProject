@@ -9,5 +9,8 @@
     <hr>
     <div th:text="${person.getFullName()} + ', ' + ${person.getYearOfBirth()}"></div>
     <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit user</a>
+    <form th:method="POST" th:action="@{/people/{id}/delete(id=${person.getId()})}" onsubmit="return confirm('Do you really want to delete the person?');">
+        <input type="submit" value="Delete">
+    </form>
 </body>
 </html>
