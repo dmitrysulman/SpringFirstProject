@@ -36,7 +36,7 @@ public class BooksController {
     }
 
     @GetMapping("/{id}")
-    public String show(Model model, @PathVariable("id") int id, @ModelAttribute Person person) {
+    public String show(@PathVariable("id") int id, Model model, @ModelAttribute("person") Person person) {
         Optional<Book> book = bookDAO.show(id);
         if (book.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found");
@@ -69,7 +69,7 @@ public class BooksController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id) {
+    public String edit(@PathVariable("id") int id, Model model) {
         Optional<Book> book = bookDAO.show(id);
         if (book.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found");
@@ -81,8 +81,10 @@ public class BooksController {
     }
 
     @PostMapping("/{id}/edit")
-    public String update(@ModelAttribute @Valid Book book, @PathVariable("id") int id, BindingResult bindingResult) {
+    public String update(@PathVariable("id") int id, @ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
+        System.out.println("we are here");
         if (bindingResult.hasErrors()) {
+            System.out.println("we are inside");
             return "books/edit";
         }
         bookDAO.update(id, book);
@@ -103,7 +105,7 @@ public class BooksController {
     }
 
     @PostMapping("/{id}/assign")
-    public String assign(@ModelAttribute Person person, @PathVariable("id") int id) {
+    public String assign(@PathVariable("id") int id, @ModelAttribute("person") Person person) {
         bookDAO.assign(id, person);
 
         return "redirect:/books/" + id;

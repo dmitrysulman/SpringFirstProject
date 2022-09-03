@@ -35,7 +35,7 @@ public class PeopleController {
     }
 
     @GetMapping("/{id}")
-    public String show(Model model, @PathVariable("id") int id) {
+    public String show(@PathVariable("id") int id, Model model) {
         Optional<Person> person = personDAO.show(id);
         if (person.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
@@ -66,7 +66,7 @@ public class PeopleController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id) {
+    public String edit(@PathVariable("id") int id, Model model) {
         Optional<Person> person = personDAO.show(id);
         if (person.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
@@ -78,7 +78,7 @@ public class PeopleController {
     }
 
     @PostMapping("/{id}/edit")
-    public String update(@ModelAttribute @Valid Person person, @PathVariable("id") int id, BindingResult bindingResult) {
+    public String update(@PathVariable("id") int id, @ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
         personValidator.validate(person, bindingResult);
         if (bindingResult.hasErrors()) {
             return "people/edit";
