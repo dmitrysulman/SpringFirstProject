@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Страница пользователя ' + ${person.getFullName()}"></title>
+</head>
+<body>
+    <a href="/people"><< К списку людей</a>
+    <hr>
+    <div th:text="${person.getFullName()} + ', ' + ${person.getYearOfBirth()}"></div>
+    <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Изменить</a>
+</body>
+</html>

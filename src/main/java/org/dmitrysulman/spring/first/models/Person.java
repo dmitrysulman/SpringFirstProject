@@ -1,6 +1,5 @@
 package org.dmitrysulman.spring.first.models;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -12,7 +11,6 @@ public class Person {
     @Size(min = 3, max = 100, message = "Длина ФИО должна быть от 3 до 100")
     private String fullName;
 
-    @NotEmpty(message = "Год рождения не должен быть пустым")
     @Min(value = 1900, message = "Год рождение не должен быть меньше 1900")
     private int yearOfBirth;
 
