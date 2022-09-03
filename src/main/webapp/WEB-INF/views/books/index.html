@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+    <p><a href="/people">Users</a> | Books</p>
+    <div th:each="book : ${books}">
+        <a th:text="${book.getTitle()} + ', ' + ${book.getAuthor()} + ', ' + ${book.getYear()}" th:href="@{/books/{id}(id=${book.getId()})}"></a>
+    </div>
+    <hr>
+    <a href="/books/add">New book</a>
+</body>
+</html>

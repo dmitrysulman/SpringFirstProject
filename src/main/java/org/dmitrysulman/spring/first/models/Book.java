@@ -7,23 +7,20 @@ import javax.validation.constraints.Size;
 public class Book {
     private int id;
 
-    private int person_id;
-
     @NotEmpty(message = "Name should not be empty")
     @Size(min = 3, max = 200, message = "Name should be between 3 and 200")
-    private String name;
+    private String title;
 
     @NotEmpty(message = "Author should not be empty")
     @Size(min = 3, max = 400, message = "Author should be between 3 and 400")
     private String author;
 
-    @Min(value = 1900, message = "Year of birth should be greater than 1899")
+    @Min(value = 1900, message = "Year of publication should be greater than 1899")
     private int year;
 
-    public Book(int id, int person_id, String name, String author, int year) {
+    public Book(int id, String title, String author, int year) {
         this.id = id;
-        this.person_id = person_id;
-        this.name = name;
+        this.title = title;
         this.author = author;
         this.year = year;
     }
@@ -39,20 +36,12 @@ public class Book {
         this.id = id;
     }
 
-    public int getPerson_id() {
-        return person_id;
+    public String getTitle() {
+        return title;
     }
 
-    public void setPerson_id(int person_id) {
-        this.person_id = person_id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getAuthor() {
