@@ -82,9 +82,7 @@ public class BooksController {
 
     @PostMapping("/{id}/edit")
     public String update(@PathVariable("id") int id, @ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
-        System.out.println("we are here");
         if (bindingResult.hasErrors()) {
-            System.out.println("we are inside");
             return "books/edit";
         }
         bookDAO.update(id, book);
